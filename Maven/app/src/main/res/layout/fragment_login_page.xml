@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/frameLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    tools:context=".LoginPage">
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="25dp"
+        android:contentDescription="@string/logo_descr"
+        android:src="@drawable/logoshunio" />
+
+    <TextView
+        android:id="@+id/textCigefi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/logo"
+        android:layout_alignStart="@+id/logo"
+        android:layout_alignLeft="@+id/logo"
+        android:layout_marginStart="-71dp"
+        android:layout_marginLeft="-71dp"
+        android:layout_marginTop="23dp"
+        android:text="@string/title_cigefi"
+        android:textAlignment="center"
+        android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/textUcr"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textCigefi"
+        android:layout_alignStart="@+id/textCigefi"
+        android:layout_alignLeft="@+id/textCigefi"
+        android:layout_marginStart="68dp"
+        android:layout_marginLeft="68dp"
+        android:layout_marginTop="5dp"
+        android:text="@string/title_ucr"
+        android:textAlignment="center"
+        android:textSize="24sp" />
+
+    <EditText
+        android:id="@+id/textUser"
+        android:layout_width="200dp"
+        android:layout_height="30dp"
+        android:layout_below="@+id/textUcr"
+        android:layout_alignStart="@+id/textUcr"
+        android:layout_alignLeft="@+id/textUcr"
+        android:layout_marginStart="23dp"
+        android:layout_marginLeft="23dp"
+        android:layout_marginTop="63dp"
+        android:background="#ffffff"
+        android:drawableStart="@drawable/ic_action_user"
+        android:drawableLeft="@drawable/ic_action_user"
+        android:ems="10"
+        android:hint="@string/title_user"
+        android:inputType="textPersonName"
+        android:textSize="24sp" />
+
+    <EditText
+        android:id="@+id/txtPwd"
+        android:layout_width="200dp"
+        android:layout_height="30dp"
+        android:layout_below="@+id/textUser"
+        android:layout_alignStart="@+id/textUser"
+        android:layout_alignLeft="@+id/textUser"
+        android:layout_marginStart="0dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="23dp"
+        android:background="#ffffff"
+        android:drawableStart="@drawable/ic_action_pass"
+        android:drawableLeft="@drawable/ic_action_pass"
+        android:ems="10"
+        android:hint="@string/title_pass"
+        android:inputType="textPassword"
+        android:textSize="24sp" />
+
+    <Button
+        android:id="@+id/btnIngresar"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:layout_below="@+id/txtPwd"
+        android:layout_alignStart="@+id/txtPwd"
+        android:layout_alignLeft="@+id/txtPwd"
+        android:layout_marginStart="-20dp"
+        android:layout_marginLeft="-20dp"
+        android:layout_marginTop="38dp"
+        android:background="@android:color/darker_gray"
+        android:text="@string/title_ing"
+        android:textColor="#ffffff"
+        android:textSize="24sp" />
+
+</RelativeLayout>
