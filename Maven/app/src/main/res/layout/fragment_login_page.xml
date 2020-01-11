@@ -84,7 +84,7 @@
         android:textSize="24sp" />
 
     <Button
-        android:id="@+id/btnIngresar"
+        android:id="@+id/btnIntro"
         android:layout_width="250dp"
         android:layout_height="50dp"
         android:layout_below="@+id/txtPwd"
