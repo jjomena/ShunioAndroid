@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">Login_PHP_MySQL</string>
+    <string name="title_ing">Ingresar</string>
+    <string name="title_close">Cerrar</string>
+    <string name="title_pass">Password</string>
+    <string name="title_user">Usuario</string>
+    <string name="title_cigefi">Centro de Investigaciones Geofísicas</string>
+    <string name="title_ucr">Universidad de Costa Rica</string>
+    <string name="logo_descr">Shunio-Móvil</string>
+    <string name="about_desc">Este proyecto cuenta con licencia GNU General Public License V3. Producto desarrollado por:</string>
+    <string name="dev1">Julio Sánchez Jiménez</string>
+    <string name="dev2">Joaquín Mena Montero</string>
 </resources>
