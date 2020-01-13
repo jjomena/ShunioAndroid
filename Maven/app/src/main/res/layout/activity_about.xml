@@ -4,17 +4,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".AboutActivity">
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="376dp"
             android:layout_height="match_parent"
             android:layout_marginLeft="25dp"
             android:layout_marginRight="25dp"
+            android:background="#ffffff"
             android:gravity="center"
             android:orientation="vertical">
 
@@ -23,15 +24,14 @@
                 android:layout_width="151dp"
                 android:layout_height="113dp"
                 android:layout_marginBottom="40dp"
-                android:contentDescription="@string/logo_descr"
-                android:src="@drawable/shunio" />
+                app:srcCompat="@drawable/logoshunio" />
 
             <TextView
                 android:id="@+id/textCigefi"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/title_cigefi"
                 android:layout_marginTop="20dp"
+                android:text="@string/title_cigefi"
                 android:textAlignment="center"
                 android:textSize="24sp" />
 
@@ -42,45 +42,44 @@
                 android:text="@string/title_ucr"
                 android:textAlignment="center"
                 android:textSize="24sp" />
-            <EditText
-                android:id="@+id/edtUsuario"
+
+            <TextView
+                android:id="@+id/txtLicence"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="26dp"
-                android:backgroundTint="@android:color/darker_gray"
-                android:drawableLeft="@drawable/icon_email"
-                android:ems="10"
-                android:hint="@string/title_user"
-                android:inputType="textPersonName"
-                android:paddingLeft="5dp" />
+                android:text="@string/about_desc"
+                android:textAlignment="center"
+                android:textSize="20sp" />
 
-            <EditText
-                android:id="@+id/edtPassword"
+            <TextView
+                android:id="@+id/txtDev1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="8dp"
-                android:backgroundTint="@android:color/darker_gray"
-                android:drawableLeft="@drawable/icon_lock"
-                android:ems="10"
-                android:hint="@string/title_pass"
-                android:inputType="textPassword"
-                android:paddingLeft="5dp" />
+                android:layout_marginTop="20dp"
+                android:text="@string/dev1"
+                android:textAlignment="center"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/txtDev2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/dev2"
+                android:textAlignment="center"
+                android:textSize="20sp" />
 
             <Button
-                android:id="@+id/btnLogin"
+                android:id="@+id/btnCerrar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="15dp"
                 android:layout_marginTop="30dp"
                 android:layout_marginRight="15dp"
                 android:background="#759995"
-                android:text="@string/title_ing"
+                android:text="@string/title_close"
                 android:textColor="#FFF"
                 android:textSize="18sp" />
-
         </LinearLayout>
     </FrameLayout>
-
 </androidx.constraintlayout.widget.ConstraintLayout>

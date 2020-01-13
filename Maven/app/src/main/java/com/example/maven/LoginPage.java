@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.util.Log;
@@ -27,21 +28,21 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 
-public class LoginPage extends Fragment implements Response.Listener<JSONObject>, Response.ErrorListener{
+public class LoginPage extends Fragment {
 
     private RequestQueue rq;
+    private JsonRequest jrq;
     private EditText fieldUser, fieldPwd;
+    private Button btnConsult;
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        //return inflater.inflate(R.layout.fragment_login_page, container,false);
         View vista = inflater.inflate(R.layout.fragment_login_page,container,false);
-        fieldUser=(EditText) vista.findViewById(R.id.textUser);
-        fieldPwd=(EditText) vista.findViewById(R.id.txtPwd);
-        Button btnConsult = (Button) vista.findViewById(R.id.btnIntro);
+        fieldUser = vista.findViewById(R.id.textUser);
+        fieldPwd = vista.findViewById(R.id.txtPwd);
+        btnConsult = (Button) vista.findViewById(R.id.btnIngrear);
         rq = Volley.newRequestQueue(getContext());
 
         btnConsult.setOnClickListener(new View.OnClickListener() {
@@ -55,75 +56,37 @@ public class LoginPage extends Fragment implements Response.Listener<JSONObject>
         return vista;
     }
 
-    private void newSesion() {
-        String url = "http://192.168.0.11/login/sesion.php?user="+fieldUser.getText().toString()+
-                "&pwd="+fieldPwd.getText().toString();
-        Log.d("URLConexion",url);
+   public void nuevaSesion(){
+        final String names=fieldUser.getText().toString();
+        final String pwd=fieldPwd.getText().toString();
 
-        JsonRequest jrq = new JsonObjectRequest(Request.Method.GET, url, null, this, this);
-        rq.add(jrq);
-    }
-
-    private void nuevaSesion(){
-        final String username=fieldUser.getText().toString();
-        final String password=fieldPwd.getText().toString();
-        Response.Listener<String> responseListener = new Response.Listener<String>() {
+        Response.Listener<String> responses = new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 try {
                     JSONObject jsonResponse = new JSONObject(response);
-                    boolean success = jsonResponse.getBoolean("success");
-                    if (success){
-                        String name = jsonResponse.getString("names");
-                        Intent intencion = new Intent(getContext(),GraphicActivity.class);
-                        //intencion.putExtra(GraphicActivity.nombres,userJson.getFirst_name());
-                        intencion.putExtra(GraphicActivity.nombres,name);
-                        startActivity(intencion);
+                    boolean success=jsonResponse.getBoolean("success");
+
+                    if(success){
+                        String names=jsonResponse.getString("names");
+                        Intent intent = new Intent(getContext(),GraphicActivity.class);
+                        intent.putExtra("names",names);
+                        //intent.putExtra(GraphicActivity.nombres,names);
+                        startActivity(intent);
+
                     }else{
                         Toast.makeText(getContext(),"No se encontro el usuario",Toast.LENGTH_SHORT).show();
                     }
                 } catch (JSONException e) {
+                    Toast.makeText(getContext(),"No se encontro el usuario" + e,Toast.LENGTH_SHORT).show();
                     e.printStackTrace();
                 }
+
             }
         };
-        LoginRequest loginRequest = new LoginRequest(username,password,responseListener);
-        rq = Volley.newRequestQueue(getContext());
-        rq.add(loginRequest);
-    }
 
-
-
-
-    @Override
-    public void onResponse(JSONObject response) {
-        //User userJson = new User();
-        OtherUser usuario = new OtherUser();
-
-        Toast.makeText(getContext(),"Se ha encontrado el usuario "+ fieldUser.getText().toString(), Toast.LENGTH_SHORT).show();
-        JSONArray jsonArray = response.optJSONArray("datos");
-        JSONObject jsonObject= null;
-        try {
-            jsonObject = jsonArray.getJSONObject(0);
-            usuario.setUser(jsonObject.optString("user"));
-            usuario.setPwd(jsonObject.optString("pwd"));
-            usuario.setNames(jsonObject.optString("names"));
-            //userJson.setFirst_name(jsonObject.optString("first_name"));
-            //userJson.setLast_name(jsonObject.optString("last_name"));
-        }catch (JSONException e){
-            e.printStackTrace();
-        }
-
-        Intent intencion = new Intent(getContext(),GraphicActivity.class);
-        //intencion.putExtra(GraphicActivity.nombres,userJson.getFirst_name());
-        intencion.putExtra(GraphicActivity.nombres,usuario.getNames());
-        startActivity(intencion);
-
-
-    }
-
-    @Override
-    public void onErrorResponse(VolleyError error) {
-        Toast.makeText(getContext(),"No se encontro el usuario" + error.toString(),Toast.LENGTH_SHORT).show();
-    }
+        LoginRequest loginRequest = new LoginRequest(names,pwd,responses);
+        RequestQueue queue = Volley.newRequestQueue(getContext());
+        queue.add(loginRequest);
+   }
 }

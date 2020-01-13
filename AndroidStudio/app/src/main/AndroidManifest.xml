@@ -12,7 +12,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".AboutActivity"></activity>
+        <activity android:name=".GraphicActivity"></activity>
+        <activity android:name=".AboutActivity" />
         <activity android:name=".PrincipalActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
